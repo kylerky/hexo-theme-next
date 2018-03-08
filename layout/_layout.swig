@@ -10,6 +10,9 @@
   {{ partial('_partials/head/head.swig', {}, {cache: theme.cache.enable}) }}
   {% include '_partials/head/head-unique.swig' %}
   <title>{% block title %}{% endblock %}</title>
+  {% if theme.hljs.enable %}
+  <link rel="stylesheet" type="text/css" href="{{ url_for(theme.css) }}/hljs/monokai-sublime.css">
+  {% endif %}
   {% include '_third-party/analytics/index.swig' %}
   {% include '_scripts/noscript.swig' %}
 </head>
@@ -80,6 +83,8 @@
   {% block script_extra %}{% endblock %}
 
   {% include '_scripts/boostrap.swig' %}
+
+  {% include '_scripts/highlightjs.swig' %}
 
   {% include '_third-party/comments/index.swig' %}
   {% include '_third-party/search/index.swig' %}
